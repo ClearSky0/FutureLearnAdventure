@@ -7,7 +7,7 @@ from rpg import Room, Item, Container, Enemy, Friend
 # from character import Friend
 
 # Valid Commands
-movements = ["north", "n", "south", "s", "east", "e", "west", "w"]
+movements = ["n", "north", "s", "south", "e", "east", "w", "west"]
 commands = ["exit", "talk", "give", "hug", "bribe", "inv", "take", "drop", "what", "look", "who"]
 
 alive = True
@@ -150,6 +150,10 @@ while Enemy.count > 0 and keep_looping:
                     break
 
             elif command in movements:
+
+                if len(command) == 1:
+                    command = movements[movements.index(command) + 1]
+
                 previous_room = current_room
                 current_room = current_room.move(command)
 
